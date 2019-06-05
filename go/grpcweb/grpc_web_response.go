@@ -83,7 +83,7 @@ func (w *grpcWebResponse) prepareHeaders() {
 	)
 	wh.Set(
 		http.CanonicalHeaderKey("access-control-expose-headers"),
-		strings.Join(headerKeys(wh), ", "),
+		strings.Join(append(headerKeys(wh), http.CanonicalHeaderKey("grpc-status"), http.CanonicalHeaderKey("grpc-message")), ", "),
 	)
 }
 
